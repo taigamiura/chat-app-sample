@@ -1,0 +1,28 @@
+Users:
+  - id: "String" # ユーザー固有のID
+    name: "String" # ユーザー名
+    phone_number: "String" # 電話番号
+    created_at: "Timestamp" # 作成日時
+    deleted_at: "Timestamp" # 削除日時（null許容）
+
+Friends:
+  - id: "String" # フレンド関係固有のID
+    user_id: "String" # ユーザーID
+    friend_id: "String" # フレンドのユーザーID
+    created_at: "Timestamp"
+    deleted_at: "Timestamp"
+
+ChatRooms:
+  - id: "String" # チャットルーム固有のID
+    creator_id: "String" # 作成者のユーザーID
+    user_ids: ["String"] # チャットルームに含まれるユーザーIDのリスト
+    created_at: "Timestamp" # 作成日時
+    deleted_at: "Timestamp" # 削除日時（null許容）
+    message_ids: ["String"] # 修正: メッセージIDのリスト
+
+Messages:
+  - id: "String"
+    chat_room_id: "String" # チャットルームのID
+    user_id: "String" # メッセージを送信したユーザーのID
+    message: "String" # メッセージ内容
+    created_at: "Timestamp"

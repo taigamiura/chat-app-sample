@@ -3,12 +3,12 @@ import { View, TouchableOpacity, Text, StyleSheet } from 'react-native';
 import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '@/store';
 import { increment, decrement, multiply, divide, reset } from '@/store/counter';
-
+import { addChatRoom, getChatRooms } from '@/lib/firebase/firestore/chatRoomApi';
 export default function CountView() {
   const count: number = useSelector((store: RootState) => store.counter.counter)
   const dispatch = useDispatch();
 
-  const buttonClick = (action: string) => {
+  const buttonClick = async (action: string) => {
     switch (action) {
       case 'increment':
         dispatch(increment(1));
@@ -23,6 +23,14 @@ export default function CountView() {
         dispatch(divide(2));
         break;
       case 'reset':
+        await addChatRoom({creatorId: 'aaaaaaaaa001', friendId: 'bbbbbbbbb002'})
+        // await getChatRooms('bbbbbbbbb002')
+//         const r = await isChatRoomExists({ chatRoomId: 'uc9u4SLX8mS5reOwpUFL', creatorId: 'aaaaaaaaa001', userIds: ['aaaaaaaaa001', 'bbbbbbbbb002'] })
+// console.log(r)
+// const all = await getChatRoom({ chatRoomId: 'uc9u4SLX8mS5reOwpUFL', creatorId: 'aaaaaaaaa001', userIds: ['aaaaaaaaa001', 'bbbbbbbbb002'] });
+// console.log(all)
+//     await postMessage({chatRoomId: 'uc9u4SLX8mS5reOwpUFL', toUserId: 'aaaaaaaaa001', userIds: ['aaaaaaaaa001', 'bbbbbbbbb002'], message: 'FFFFFFFOOOOOOOOO'})
+  ///////////////////////////////////
         dispatch(reset());
         break;
       default:
